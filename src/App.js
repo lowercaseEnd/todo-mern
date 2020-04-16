@@ -15,7 +15,7 @@ class App extends React.Component {
         <Container>
           <Navbar bg="light" expand="lg">
             <Navbar.Brand href="#">
-              <img src={logo} width="30" height="30" alt="React logo" />
+              <img className="align-top d-inline-block" src={logo} width="30" height="30" alt="React logo" />
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="navbarContent" />
 

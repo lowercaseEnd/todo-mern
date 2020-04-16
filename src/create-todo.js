@@ -1,4 +1,9 @@
 import React from "react";
+import {Form, Button} from "react-bootstrap";
+
+import Description from "./Components/description";
+import Responsible from "./Components/responsible";
+import Priority from "./Components/priority";
 
 class CreateTodo extends React.Component {
   constructor(props) {
@@ -44,30 +49,36 @@ class CreateTodo extends React.Component {
     return (
       <section>
         <h3>Welcome to Create Todo Component!</h3>
-        <form onSubmit={this.onSubmit}>
-          <fieldset className="form-group">
-            <label htmlFor="change-description">Description: </label>
-            <input type="text" className="form-control" value={this.state.description} onChange={this.changeDescription} id="change-description" />
-          </fieldset>
-          <fieldset className="form-group">
-            <label htmlFor="change-resposible">Responsible: </label>
-            <input type="text" className="form-control" value={this.state.responsible} onChange={this.changeResponsible} id="change-resposible" />
-          </fieldset>
-          <fieldset className="form-group">
+        <Form onSubmit={this.onSubmit}>
+          <Description description={this.state.description} change={this.changeDescription} />
+          <Responsible responsible={this.state.responsible} change={this.changeResponsible} />
+          <Priority priority={this.state.priority} change={this.changePriority} />
+          {/* <Form.Group className="form-group">
+            <Form.Label htmlFor="change-description">Description: </Form.Label>
+            <Form.Control type="text" className="form-control" value={this.state.description} onChange={this.changeDescription} id="change-description" />
+          </Form.Group> */}
+          {/* <Form.Group className="form-group">
+            <Form.Label htmlFor="change-resposible">Responsible: </Form.Label>
+            <Form.Control type="text" className="form-control" value={this.state.responsible} onChange={this.changeResponsible} id="change-resposible" />
+          </Form.Group> */}
+          {/* <Form.Group className="form-group">
             <div className="form-check form-check-inline">
-              <input className="form-check-input" type="radio" name="priorityOptions" id="priorityLow" value="Low" checked={this.state.priority === "Low"} onChange={this.changePriority} />
-              <label htmlFor="priorityLow" className="form-check-label">Low</label>
+              <Form.Check className="form-check-input" type="radio" name="priorityOptions" id="priorityLow" value="Low" checked={this.state.priority === "Low"} onChange={this.changePriority} />
+              <Form.Label htmlFor="priorityLow" className="form-check-Form.Label">Low</Form.Label>
             </div>
             <div className="form-check form-check-inline">
-              <input className="form-check-input" type="radio" name="priorityOptions" id="priorityMedium" value="Medium" checked={this.state.priority === "Medium"} onChange={this.changePriority} />
-              <label htmlFor="priorityMedium" className="form-check-label">Medium</label>
+              <Form.Check className="form-check-input" type="radio" name="priorityOptions" id="priorityMedium" value="Medium" checked={this.state.priority === "Medium"} onChange={this.changePriority} />
+              <Form.Label htmlFor="priorityMedium" className="form-check-Form.Label">Medium</Form.Label>
             </div>
             <div className="form-check form-check-inline">
-              <input className="form-check-input" type="radio" name="priorityOptions" id="priorityHigh" value="High" checked={this.state.priority === "High"} onChange={this.changePriority} />
-              <label htmlFor="priorityHigh" className="form-check-label">High</label>
+              <Form.Check className="form-check-input" type="radio" name="priorityOptions" id="priorityHigh" value="High" checked={this.state.priority === "High"} onChange={this.changePriority} />
+              <Form.Label htmlFor="priorityHigh" className="form-check-Form.Label">High</Form.Label>
             </div>
-          </fieldset>
-        </form>
+          </Form.Group> */}
+          <Form.Group>
+            <Button  type="submit">Create Todo</Button>
+          </Form.Group>
+        </Form>
       </section>
     )
   }
