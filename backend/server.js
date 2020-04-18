@@ -37,19 +37,33 @@ todoRoutes.route("/").get((req, res) => {
 todoRoutes.route("/:id").get((req, res) => {
   let id = req.params.id;
   Todo.findById(id, (err, todo) => {
-    res.json(todo);
+    if(err) {
+      res.json(err);
+    } else {
+      res.json(todo);
+    }
   })
 });
 
 todoRoutes.route("/add").post((req, res) => {
   let todo = new Todo(req.body);
-  console.log(req.body);
-  todo.save().then(todo => {
+  todo.save().then(item => {
     res.status(200).json({ "todo": "Todo added successfully" });
   }).catch(err => {
     res.status(400).send("Adding new todo failed");
   });
 });
+
+todoRoutes.route("/delete/:id").delete((req, res) => {
+  let id = req.params.id;
+  Todo.findByIdAndDelete(id, (err, todo) => {
+    if(err) {
+      res.json(err);
+    } else {
+      res.json(todo);
+    }
+  })
+})
 
 todoRoutes.route("/update/:id").post((req, res) => {
   Todo.findById(req.params.id, (err, todo) => {
@@ -62,7 +76,7 @@ todoRoutes.route("/update/:id").post((req, res) => {
       todo.completed = req.body.completed;
 
       todo.save().then(todo => {
-        res.json("Todo updated!");
+        res.json(todo + "Todo updated!");
       }).catch(err => {
         res.status(400).send("Update not possible");
       });
