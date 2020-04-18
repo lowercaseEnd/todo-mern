@@ -56,8 +56,6 @@ class EditTodo extends React.Component {
   }
   onSubmit(event) {
     event.preventDefault();
-    console.log(`Form submitted:\nTodo description: ${this.state.description}`);
-    console.log(`Todo responsible: ${this.state.responsible}\nTodo priority: ${this.state.priority}`);
     const newTodo = {
       description: this.state.description,
       responsible: this.state.responsible,
@@ -65,12 +63,7 @@ class EditTodo extends React.Component {
       completed: this.state.completed
     };
     axios.post(`http://localhost:4000/todos/update/${this.props.match.params.id}`, newTodo).then(res => console.log(res.data));
-    this.setState({
-      description: "",
-      responsible: "",
-      priority: "",
-      completed: false
-    });
+    this.props.history.push("/");
   }
   render() {
     return (
