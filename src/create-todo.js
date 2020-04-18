@@ -5,6 +5,7 @@ import axios from "axios";
 import Description from "./Components/description";
 import Responsible from "./Components/responsible";
 import Priority from "./Components/priority";
+import Submit from "./Components/submit";
 
 class CreateTodo extends React.Component {
   constructor(props) {
@@ -61,9 +62,7 @@ class CreateTodo extends React.Component {
           <Description description={this.state.description} change={this.changeDescription} />
           <Responsible responsible={this.state.responsible} change={this.changeResponsible} />
           <Priority priority={this.state.priority} change={this.changePriority} />
-          <Form.Group>
-            <Button type="submit">Create Todo</Button>
-          </Form.Group>
+          <Submit />
         </Form>
       </section>
     )
