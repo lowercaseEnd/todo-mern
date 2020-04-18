@@ -63,7 +63,10 @@ todoRoutes.route("/delete/:id").delete((req, res) => {
       res.json(todo);
     }
   })
-})
+});
+todoRoutes.route("/delete").delete((req, res) => {
+  Todo.collection.drop();
+});
 
 todoRoutes.route("/update/:id").post((req, res) => {
   Todo.findById(req.params.id, (err, todo) => {
